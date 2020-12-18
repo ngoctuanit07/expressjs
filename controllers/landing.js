@@ -7,8 +7,14 @@ exports.submit_form = function(req,res,next){
     return models.Lead.create({
         email:req.body.lead_email
     }).then(lead =>{
-        res.redirect('/');
+        res.redirect('/leads');
     })
    // alert("email",req.body.lead_email);
+
+}
+exports.show_leads = function(req,res,next){
+   return  models.Lead.findAll().then(leads => {
+        res.render('landing',{title:'Demo',leads:leads});
+    })
 
 }
