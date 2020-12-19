@@ -3,16 +3,21 @@ html(lang="en")
 	include common/head.pug
 	+head("Demo")
 	body
-		h1= title
-		p Welcome to #{title}
-		if leads
-			h1 Leads
-			for lead in leads
-				p(id=lead.id)
-					span #{lead.email}
-					|
-					a(href="/lead/" + lead.id) Details
-					button(onClick=`deleteLead('${lead.id}')`) Delete
-					|
+		include common/navarbar.pug
+		+navarbar()
+		.container
+			.row
+				.col-md-12
+					h1= title
+					p Welcome to #{title}
+					if leads
+						h1 Leads
+						for lead in leads
+							p(id=lead.id)
+								span #{lead.email}
+								|
+								a(href="/lead/" + lead.id) Details
+								button.btn.btn-default(onClick=`deleteLead('${lead.id}')`) Delete
+								|
 	include common/footer.pug
 	+footer()
